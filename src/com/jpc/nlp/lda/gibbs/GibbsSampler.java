@@ -344,9 +344,13 @@ public class GibbsSampler {
 
 			for (int topicIndex = 0; topicIndex < this.topicCount; topicIndex++) {
 
-				theta[docIndex][topicIndex] += (this.topicCount4Doc[docIndex][topicIndex] + beta)
+				/*theta[docIndex][topicIndex] += (this.topicCount4Doc[docIndex][topicIndex] + beta)
 						/ (this.topicCount4DocSum[docIndex] + this.topicCount
-								* beta);
+								* beta);*/
+								
+				theta[docIndex][topicIndex] += (this.topicCount4Doc[docIndex][topicIndex] + alpha)
+						/ (this.topicCount4DocSum[docIndex] + this.topicCount
+								* alpha);
 			}
 		}
 	}
@@ -357,9 +361,12 @@ public class GibbsSampler {
 
 			for (int wordIndex = 0; wordIndex < this.vocabularyCount; wordIndex++) {
 
-				phi[topicIndex][wordIndex] += (this.wordCount4Topic[topicIndex][wordIndex] + alpha)
+				/*phi[topicIndex][wordIndex] += (this.wordCount4Topic[topicIndex][wordIndex] + alpha)
 						/ (this.wordCount4TopicSum[topicIndex] + this.vocabularyCount
-								* alpha);
+								* alpha);*/
+				phi[topicIndex][wordIndex] += (this.wordCount4Topic[topicIndex][wordIndex] + beta)
+						/ (this.wordCount4TopicSum[topicIndex] + this.vocabularyCount
+								* beta);
 			}
 		}
 	}
